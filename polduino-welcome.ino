@@ -26,6 +26,28 @@ void generateSignal(int frequency, int durationMs) {
     digitalWrite(SPEAKER, LOW);
     delayMicroseconds(halfPeriod);
   }
+  playAnthem(); // Play the anthem for demonstration
+}
+
+void playAnthem() {
+  // Define the melody and note durations for Mazurek Dąbrowskiego
+  MusicalNote melody[] = {
+    NOTE_G4, NOTE_E4, NOTE_F4, NOTE_G4, NOTE_A4, NOTE_B4, NOTE_C5, NOTE_D5,
+    NOTE_E5, NOTE_F5, NOTE_G5, NOTE_A5, NOTE_B5, NOTE_C5, NOTE_D5, NOTE_E5
+  };
+  
+  int noteDurations[] = {
+    500, 500, 500, 500, 500, 500, 500, 500,
+    500, 500, 500, 500, 500, 500, 500, 500
+  };
+
+  // Play each note in the melody
+  for (int i = 0; i < sizeof(melody) / sizeof(melody[0]); i++) {
+    int note = melody[i];
+    int duration = noteDurations[i];
+    generateSignal(noteFrequencies[note], duration);
+    delay(50); // Short pause between notes
+  }
 }
 
 void setup() {
