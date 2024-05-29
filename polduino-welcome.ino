@@ -13,13 +13,13 @@ void generateSignal(int frequency) {
     digitalWrite(SPEAKER, LOW);
     delayMicroseconds(halfPeriod);
   }
-  generateSignal(1000); // Generate a 1kHz signal for demonstration
 }
 
 void setup() {
   // put your setup code here, to run once:
   pinMode(WARSAW_LED, OUTPUT);
   pinMode(SPEAKER, OUTPUT);
+  generateSignal(1000);
 }
 
 void loop() {
