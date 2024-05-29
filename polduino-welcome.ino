@@ -3,11 +3,12 @@
 #define UART_RX     (0)
 #define UART_TX     (1)
 
-void generateSignal(int frequency) {
+void generateSignal(int frequency, int durationMs) {
   int period = 1000000 / frequency; // Period in microseconds
   int halfPeriod = period / 2; // Half period
 
-  for (int i = 0; i < 100; i++) { // Generate 100 cycles
+  unsigned long startTime = millis();
+  while (millis() - startTime < durationMs) {
     digitalWrite(SPEAKER, HIGH);
     delayMicroseconds(halfPeriod);
     digitalWrite(SPEAKER, LOW);
@@ -19,7 +20,7 @@ void setup() {
   // put your setup code here, to run once:
   pinMode(WARSAW_LED, OUTPUT);
   pinMode(SPEAKER, OUTPUT);
-  generateSignal(1000);
+  generateSignal(1000, 1000); // Generate a 1kHz signal for 1 second for demonstration
 }
 
 void loop() {
