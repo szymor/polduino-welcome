@@ -104,9 +104,21 @@ void setup() {
   // put your setup code here, to run once:
   pinMode(WARSAW_LED, OUTPUT);
   pinMode(SPEAKER, OUTPUT);
+  pinMode(UART_RX, OUTPUT);
+  pinMode(UART_TX, OUTPUT);
+
+  digitalWrite(UART_RX, LOW);
+  digitalWrite(UART_TX, LOW);
   playVerse();
+
+  digitalWrite(UART_TX, HIGH);
   playChorus();
+
+  digitalWrite(UART_TX, LOW);
+  digitalWrite(UART_RX, HIGH);
   playChorus();
+
+  digitalWrite(UART_RX, LOW);
 }
 
 void loop() {
